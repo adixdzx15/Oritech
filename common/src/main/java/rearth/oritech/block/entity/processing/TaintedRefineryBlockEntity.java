@@ -270,6 +270,7 @@ public class TaintedRefineryBlockEntity extends MultiblockMachineEntity implemen
         return candidates
                  .stream()
                  .filter(candidate -> CentrifugeBlockEntity.recipeInputMatchesTank(ownStorage.getInputContainer().getStack(), candidate.value()))
+        .sorted(Comparator.comparingInt(a -> -a.value().getInputs().size()))
                  .findAny();
         
     }
